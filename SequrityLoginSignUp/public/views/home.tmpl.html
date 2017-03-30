@@ -1,0 +1,22 @@
+<div ng-init="getData()">
+	<div ng-repeat="item in todoItems track by $index">
+		<div ng-if="!item.isEdit">
+			<p>{{item.name}}</p>
+			<p>{{item.cost | currency}}</p>
+			<p>{{item.isDone}}</p>
+			<button ng-click="toogleEdit($index)">Edit</button>
+			<button ng-click="remove(item._id)">X</button>
+		</div>
+		<div ng-if="item.isEdit">
+			<input ng-model="item.name">
+			<input ng-model="item.cost">
+			<button ng-click="save(item._id, item)">Save</button>
+		</div>
+	</div>
+	<div>
+		<input ng-model="userInput.name" placeholder="name">
+		<input ng-model="userInput.cost" placeholder="cost">
+		<button ng-click="addItem()">Add</button>
+	</div>
+	
+</div>
